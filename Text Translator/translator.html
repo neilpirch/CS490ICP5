@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="transApp" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <title>Text Translator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="translator.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="translator.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</head>
+<body>
+<div ng-controller="transController" data-ng-init="init()">
+    <div>
+        <label for="source">Text to Translate:</label>
+        <textarea id="source" class="box">There can be only one.</textarea>
+    </div>
+    <div>
+        <label for="lang_from">Source Language</label>
+        <select name="from" id="lang_from">
+            <option value="" selected="selected">Auto-Detect</option>
+            <option ng-repeat="value in langs" value={{value.key}}>{{value.value}}</option>
+        </select>
+
+    <div>
+        <label for="lang_to">Target Language</label>
+        <select name="to" id="lang_to">
+            <option ng-repeat="value in langs" value={{value.key}}>{{value.value}}</option>
+        </select>
+    </div>
+    <div>
+        <button id="translate" ng-click="translate()">Translate</button>
+    </div>
+    </div>
+    <div>
+        <label for="output">Output:</label>
+        <div id="output" class="box">{{outputText}}</div>
+    </div>
+</div>
+
+</body>
+</html>
